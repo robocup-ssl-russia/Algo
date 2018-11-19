@@ -1,9 +1,7 @@
-%доехать в точку А, развернуться к мячу
-%agent - робот, В - мяч, G - центр ворот
 %RP.Blue(1).rul = GoalKeeperNew(agent, B, G);
 
 function rul = GoalKeeperNew(agent, B, G)
-v = 150; % окрестность ворот, их ширина, радиус окружности
+v = 150;
 bg = norm(B - G);
 b = abs(B(1) - G(1));
 g = abs(B(2) - G(2));
@@ -11,7 +9,7 @@ sina = g / bg;
 cosa = b / bg;
 X = G(1) + v * cosa;
 Y = G(2) + v * sina;
-A = [X, Y]; %точка пересечения прямой, соед. центр ворот и мяч, с окружностью с центром в G и радиусом v
+A = [X, Y];
 
 %angFinal = atan2((A(2) - agent.y), (A(1) - agent.x));
 %angRobot = agent.ang;
@@ -32,7 +30,7 @@ vicinity = r + err;
 if (dist > vicinity)
      rul = Crul(SpeedX, SpeedY, 0, 0, 0);
 else
-    dif1 = angV(ball.z - agent.z) - agent.ang; %angV возвращает угол направления вектора
+    dif1 = angV(ball.z - agent.z) - agent.ang; 
     rul = Crul(0, 0, 0, dif1 * coef1, 0);
 end
 
